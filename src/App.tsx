@@ -8,10 +8,10 @@ import LoginPage from './pages/LoginPage';
 
 // Dashboard pages
 import Dashboard from './pages/Dashboard';
-import StudentDashboard from './pages/StudentDashboard';
-import FacultyDashboard from './pages/FacultyDashboard';
-import SchoolHeadDashboard from './pages/SchoolHeadDashboard';
-import AcademicHeadDashboard from './pages/AcademicHeadDashboard';
+import StudentDashboard from './features/student/Dashboard';
+import FacultyDashboard from './features/faculty/Dashboard';
+import SchoolHeadDashboard from './features/school-head/Dashboard';
+import AcademicHeadDashboard from './features/academic-head/Dashboard';
 
 function App() {
   return (
