@@ -2,7 +2,7 @@ import { ArrowUpRight, Users, BookOpen, GraduationCap, Calendar } from 'lucide-r
 
 export default function Dashboard() {
   const stats = [
-    { label: 'Total Students', value: '4,521', icon: Users, color: 'text-primary-500', bg: 'bg-primary-50', trend: '+12%' },
+    { label: 'Total Students', value: '4,521', icon: Users, color: 'text-white', bg: 'bg-primary-500', trend: '+12%', textClass: 'text-white', trendClass: 'text-primary-100' },
     { label: 'Active Faculty', value: '312', icon: BookOpen, color: 'text-secondary-500', bg: 'bg-secondary-50', trend: '+2%' },
     { label: 'Programs', value: '48', icon: GraduationCap, color: 'text-tertiary-600', bg: 'bg-tertiary-50', trend: '0%' },
     { label: 'Upcoming Events', value: '14', icon: Calendar, color: 'text-information', bg: 'bg-blue-50', trend: '+5%' },
@@ -28,22 +28,22 @@ export default function Dashboard() {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat, index) => (
-          <div key={index} className="bg-card rounded-lg p-6 border border-border shadow-sm">
+          <div key={index} className={`rounded-lg p-6 shadow-sm border ${index === 0 ? 'bg-primary-500 border-primary-600' : 'bg-card border-border'}`}>
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-neutral-500 text-sm font-medium">{stat.label}</p>
-                <h3 className="text-2xl font-bold text-neutral-900 mt-2">{stat.value}</h3>
+                <p className={`text-sm font-medium ${stat.textClass || 'text-neutral-500'}`}>{stat.label}</p>
+                <h3 className={`text-2xl font-bold mt-2 ${stat.textClass || 'text-neutral-900'}`}>{stat.value}</h3>
               </div>
               <div className={`p-3 rounded-lg ${stat.bg} ${stat.color}`}>
                 <stat.icon className="w-6 h-6" />
               </div>
             </div>
             <div className="mt-4 flex items-center text-sm">
-              <span className="text-success flex items-center font-medium">
+              <span className={`flex items-center font-medium ${stat.trendClass || 'text-success'}`}>
                 <ArrowUpRight className="w-4 h-4 mr-1" />
                 {stat.trend}
               </span>
-              <span className="text-neutral-400 ml-2">vs last month</span>
+              <span className={`ml-2 ${stat.textClass ? 'text-primary-100' : 'text-neutral-400'}`}>vs last month</span>
             </div>
           </div>
         ))}
