@@ -3,7 +3,7 @@ import { BookOpen, Calendar, Clock, Award, ChevronRight } from 'lucide-react';
 
 export default function StudentDashboard() {
   const stats = [
-    { label: 'Enrolled Courses', value: '6', icon: BookOpen, color: 'text-primary-500', bg: 'bg-primary-50' },
+    { label: 'Enrolled Courses', value: '6', icon: BookOpen, color: 'text-white', bg: 'bg-white/20', textClass: 'text-white' },
     { label: 'Upcoming Assignments', value: '3', icon: Calendar, color: 'text-secondary-500', bg: 'bg-secondary-50' },
     { label: 'Attendance', value: '92%', icon: Clock, color: 'text-tertiary-600', bg: 'bg-tertiary-50' },
     { label: 'CGPA', value: '3.8', icon: Award, color: 'text-information', bg: 'bg-blue-50' },
@@ -21,13 +21,13 @@ export default function StudentDashboard() {
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {stats.map((stat, index) => (
-          <div key={index} className="bg-card rounded-lg p-6 border border-border shadow-sm flex items-center gap-4 hover:shadow-md transition-shadow cursor-pointer">
+          <div key={index} className={`rounded-lg p-6 shadow-sm border flex items-center gap-4 hover:shadow-md transition-shadow cursor-pointer ${index === 0 ? 'bg-gradient-to-r from-secondary-500 to-tertiary-500 border-transparent text-white' : 'bg-card border-border'}`}>
             <div className={`p-4 rounded-lg ${stat.bg} ${stat.color}`}>
               <stat.icon className="w-8 h-8" />
             </div>
             <div>
-              <p className="text-neutral-500 text-sm font-medium">{stat.label}</p>
-              <h3 className="text-2xl font-bold text-neutral-900 mt-1">{stat.value}</h3>
+              <p className={`text-sm font-medium ${stat.textClass || 'text-neutral-500'}`}>{stat.label}</p>
+              <h3 className={`text-2xl font-bold mt-1 ${stat.textClass || 'text-neutral-900'}`}>{stat.value}</h3>
             </div>
           </div>
         ))}
