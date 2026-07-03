@@ -5,6 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   darkMode: 'class',
+  safelist: [
+    { pattern: /^bg-primary-/ },
+    { pattern: /^bg-secondary-/ },
+    { pattern: /^bg-tertiary-/ },
+    { pattern: /^bg-neutral-/ }
+  ],
   theme: {
     extend: {
       colors: {
