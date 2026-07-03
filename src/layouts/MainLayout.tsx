@@ -257,49 +257,7 @@ export default function MainLayout() {
           </div>
         </div>
 
-        {/* Right Notification Panel */}
-        <div className="hidden xl:fixed xl:inset-y-0 xl:right-0 xl:z-40 xl:flex xl:w-72 xl:flex-col border-l border-border bg-surface pt-16">
-          <div className="flex flex-col flex-1 overflow-y-auto px-4 py-6 gap-y-8">
-            {/* Urgent Alerts */}
-            <section>
-               <h3 className="text-xs font-bold text-neutral-500 uppercase tracking-wider mb-4">Urgent</h3>
-               <div className="space-y-3">
-                 <div className="p-3 bg-red-50 border border-red-100 rounded-lg">
-                   <p className="text-sm font-semibold text-error">Fee Deadline Tomorrow</p>
-                   <p className="text-xs text-red-600 mt-1">Please complete your semester fee payment.</p>
-                 </div>
-               </div>
-            </section>
-
-            {/* System Alerts */}
-            <section>
-               <h3 className="text-xs font-bold text-neutral-500 uppercase tracking-wider mb-4">System</h3>
-               <div className="space-y-3">
-                 <div className="p-3 bg-blue-50 border border-blue-100 rounded-lg">
-                   <p className="text-sm font-semibold text-information">Maintenance Scheduled</p>
-                   <p className="text-xs text-blue-600 mt-1">ERP will be down from 2 AM to 4 AM.</p>
-                 </div>
-               </div>
-            </section>
-
-            {/* General Alerts */}
-            <section>
-               <h3 className="text-xs font-bold text-neutral-500 uppercase tracking-wider mb-4">General</h3>
-               <div className="space-y-3">
-                 <div className="p-3 bg-secondary-50 border border-secondary-100 rounded-lg">
-                   <p className="text-sm font-semibold text-secondary-700">New Course Material</p>
-                   <p className="text-xs text-secondary-600 mt-1">Uploaded in Advanced Mathematics.</p>
-                 </div>
-                 <div className="p-3 bg-neutral-50 border border-border rounded-lg">
-                   <p className="text-sm font-semibold text-neutral-700">Library Book Due</p>
-                   <p className="text-xs text-neutral-500 mt-1">Return "Data Structures" by Friday.</p>
-                 </div>
-               </div>
-            </section>
-          </div>
-        </div>
-
-        <div className={`flex flex-col h-screen transition-all duration-300 ${isDesktopSidebarOpen ? 'lg:pl-72' : 'lg:pl-20'} xl:pr-72`}>
+        <div className={`flex flex-col h-screen transition-all duration-300 ${isDesktopSidebarOpen ? 'lg:pl-72' : 'lg:pl-20'}`}>
           <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-border bg-surface px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
             <button
               type="button"
