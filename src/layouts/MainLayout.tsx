@@ -21,7 +21,7 @@ import {
   Cog6ToothIcon,
   XMarkIcon,
 } from '@heroicons/react/24/outline'
-import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
+import { ChevronDownIcon, MagnifyingGlassIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: HomeIcon },
@@ -46,6 +46,7 @@ function classNames(...classes: (string | boolean | undefined)[]) {
 
 export default function MainLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [isDesktopSidebarOpen, setIsDesktopSidebarOpen] = useState(true)
   const location = useLocation()
 
   return (
@@ -165,14 +166,14 @@ export default function MainLayout() {
         </Dialog>
 
         {/* Static sidebar for desktop */}
-        <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
-          <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-border bg-surface px-6 pb-4">
-            <div className="flex h-16 shrink-0 items-center mt-4 mb-2">
+        <div className={`hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:flex-col transition-all duration-300 ${isDesktopSidebarOpen ? 'lg:w-72' : 'lg:w-20'}`}>
+          <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-border bg-surface px-6 pb-4 overflow-x-hidden">
+            <div className={`flex h-16 shrink-0 items-center mt-4 mb-2 ${!isDesktopSidebarOpen && 'justify-center'}`}>
                  <Link to="/dashboard" className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded bg-primary-500 text-white flex items-center justify-center font-bold shadow-sm">
+                    <div className="w-8 h-8 shrink-0 rounded bg-primary-500 text-white flex items-center justify-center font-bold shadow-sm">
                         DUK
                     </div>
-                    <span className="text-xl font-bold text-primary-600">ERP Portal</span>
+                    {isDesktopSidebarOpen && <span className="text-xl font-bold text-primary-600 truncate">ERP Portal</span>}
                 </Link>
             </div>
             <nav className="flex flex-1 flex-col">
@@ -201,42 +202,44 @@ export default function MainLayout() {
                               'size-6 shrink-0 transition-colors',
                             )}
                           />
-                          {item.name}
+                          {isDesktopSidebarOpen && <span className="truncate">{item.name}</span>}
                         </NavLink>
                       </li>
                     )})}
                   </ul>
                 </li>
-                <li>
-                  <div className="text-xs/6 font-semibold text-neutral-500">Your teams</div>
-                  <ul role="list" className="-mx-2 mt-2 space-y-1">
-                    {teams.map((team) => (
-                      <li key={team.name}>
-                        <a
-                          href={team.href}
-                          className={classNames(
-                            team.id === 1
-                              ? 'bg-primary-50 text-primary-600'
-                              : 'text-neutral-600 hover:bg-hover hover:text-primary-600',
-                            'group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold transition-colors',
-                          )}
-                        >
-                          <span
+                {isDesktopSidebarOpen && (
+                  <li>
+                    <div className="text-xs/6 font-semibold text-neutral-500">Your teams</div>
+                    <ul role="list" className="-mx-2 mt-2 space-y-1">
+                      {teams.map((team) => (
+                        <li key={team.name}>
+                          <a
+                            href={team.href}
                             className={classNames(
                               team.id === 1
-                                ? 'border-primary-600 text-primary-600'
-                                : 'border-border text-neutral-400 group-hover:border-primary-600 group-hover:text-primary-600',
-                              'flex size-6 shrink-0 items-center justify-center rounded-lg border bg-surface text-[0.625rem] font-medium transition-colors',
+                                ? 'bg-primary-50 text-primary-600'
+                                : 'text-neutral-600 hover:bg-hover hover:text-primary-600',
+                              'group flex gap-x-3 rounded-md p-2 text-sm/6 font-semibold transition-colors',
                             )}
                           >
-                            {team.initial}
-                          </span>
-                          <span className="truncate">{team.name}</span>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </li>
+                            <span
+                              className={classNames(
+                                team.id === 1
+                                  ? 'border-primary-600 text-primary-600'
+                                  : 'border-border text-neutral-400 group-hover:border-primary-600 group-hover:text-primary-600',
+                                'flex size-6 shrink-0 items-center justify-center rounded-lg border bg-surface text-[0.625rem] font-medium transition-colors',
+                              )}
+                            >
+                              {team.initial}
+                            </span>
+                            <span className="truncate">{team.name}</span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                )}
                 <li className="mt-auto">
                   <a
                     href="#"
@@ -246,7 +249,7 @@ export default function MainLayout() {
                       aria-hidden="true"
                       className="size-6 shrink-0 text-neutral-400 group-hover:text-primary-600 transition-colors"
                     />
-                    Settings
+                    {isDesktopSidebarOpen && <span className="truncate">Settings</span>}
                   </a>
                 </li>
               </ul>
@@ -254,19 +257,71 @@ export default function MainLayout() {
           </div>
         </div>
 
-        <div className="lg:pl-72 flex flex-col h-screen">
+        {/* Right Notification Panel */}
+        <div className="hidden xl:fixed xl:inset-y-0 xl:right-0 xl:z-40 xl:flex xl:w-72 xl:flex-col border-l border-border bg-surface pt-16">
+          <div className="flex flex-col flex-1 overflow-y-auto px-4 py-6 gap-y-8">
+            {/* Urgent Alerts */}
+            <section>
+               <h3 className="text-xs font-bold text-neutral-500 uppercase tracking-wider mb-4">Urgent</h3>
+               <div className="space-y-3">
+                 <div className="p-3 bg-red-50 border border-red-100 rounded-lg">
+                   <p className="text-sm font-semibold text-error">Fee Deadline Tomorrow</p>
+                   <p className="text-xs text-red-600 mt-1">Please complete your semester fee payment.</p>
+                 </div>
+               </div>
+            </section>
+
+            {/* System Alerts */}
+            <section>
+               <h3 className="text-xs font-bold text-neutral-500 uppercase tracking-wider mb-4">System</h3>
+               <div className="space-y-3">
+                 <div className="p-3 bg-blue-50 border border-blue-100 rounded-lg">
+                   <p className="text-sm font-semibold text-information">Maintenance Scheduled</p>
+                   <p className="text-xs text-blue-600 mt-1">ERP will be down from 2 AM to 4 AM.</p>
+                 </div>
+               </div>
+            </section>
+
+            {/* General Alerts */}
+            <section>
+               <h3 className="text-xs font-bold text-neutral-500 uppercase tracking-wider mb-4">General</h3>
+               <div className="space-y-3">
+                 <div className="p-3 bg-secondary-50 border border-secondary-100 rounded-lg">
+                   <p className="text-sm font-semibold text-secondary-700">New Course Material</p>
+                   <p className="text-xs text-secondary-600 mt-1">Uploaded in Advanced Mathematics.</p>
+                 </div>
+                 <div className="p-3 bg-neutral-50 border border-border rounded-lg">
+                   <p className="text-sm font-semibold text-neutral-700">Library Book Due</p>
+                   <p className="text-xs text-neutral-500 mt-1">Return "Data Structures" by Friday.</p>
+                 </div>
+               </div>
+            </section>
+          </div>
+        </div>
+
+        <div className={`flex flex-col h-screen transition-all duration-300 ${isDesktopSidebarOpen ? 'lg:pl-72' : 'lg:pl-20'} xl:pr-72`}>
           <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-border bg-surface px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
             <button
               type="button"
               onClick={() => setSidebarOpen(true)}
               className="-m-2.5 p-2.5 text-neutral-600 hover:text-neutral-900 lg:hidden"
             >
-              <span className="sr-only">Open sidebar</span>
+              <span className="sr-only">Open mobile sidebar</span>
+              <Bars3Icon aria-hidden="true" className="size-6" />
+            </button>
+
+            {/* Desktop Sidebar Toggle */}
+            <button
+              type="button"
+              onClick={() => setIsDesktopSidebarOpen(!isDesktopSidebarOpen)}
+              className="-m-2.5 p-2.5 text-neutral-600 hover:text-neutral-900 hidden lg:block"
+            >
+              <span className="sr-only">Toggle desktop sidebar</span>
               <Bars3Icon aria-hidden="true" className="size-6" />
             </button>
 
             {/* Separator */}
-            <div aria-hidden="true" className="h-6 w-px bg-divider lg:hidden" />
+            <div aria-hidden="true" className="h-6 w-px bg-divider" />
 
             <div className="flex flex-1 gap-x-4 self-stretch lg:gap-x-6">
               <form action="#" method="GET" className="grid flex-1 grid-cols-1">
@@ -328,6 +383,41 @@ export default function MainLayout() {
 
           <main className="flex-1 overflow-y-auto">
             <div className="p-6">
+                {/* Breadcrumbs */}
+                <nav className="flex mb-4" aria-label="Breadcrumb">
+                  <ol role="list" className="flex items-center space-x-2">
+                    <li>
+                      <div>
+                        <Link to="/" className="text-neutral-400 hover:text-neutral-500">
+                          <HomeIcon className="h-5 w-5 shrink-0" aria-hidden="true" />
+                          <span className="sr-only">Home</span>
+                        </Link>
+                      </div>
+                    </li>
+                    {location.pathname.split('/').filter(Boolean).map((path, index, array) => {
+                      const to = `/${array.slice(0, index + 1).join('/')}`;
+                      const isLast = index === array.length - 1;
+                      const name = path.charAt(0).toUpperCase() + path.slice(1).replace('-', ' ');
+                      return (
+                        <li key={to}>
+                          <div className="flex items-center">
+                            <ChevronRightIcon className="h-5 w-5 shrink-0 text-neutral-400" aria-hidden="true" />
+                            {isLast ? (
+                              <span className="ml-2 text-sm font-medium text-neutral-700" aria-current="page">
+                                {name}
+                              </span>
+                            ) : (
+                              <Link to={to} className="ml-2 text-sm font-medium text-neutral-500 hover:text-neutral-700">
+                                {name}
+                              </Link>
+                            )}
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ol>
+                </nav>
+
                 <Outlet />
             </div>
           </main>
