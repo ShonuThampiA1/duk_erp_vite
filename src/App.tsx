@@ -12,6 +12,7 @@ import StudentDashboard from './pages/student/Dashboard';
 import FacultyDashboard from './pages/faculty/Dashboard';
 import SchoolHeadDashboard from './pages/school-head/Dashboard';
 import AcademicHeadDashboard from './pages/academic-head/Dashboard';
+import DesignSystem from './pages/DesignSystem';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/dashboard/faculty" element={<FacultyDashboard />} />
           <Route path="/dashboard/school-head" element={<SchoolHeadDashboard />} />
           <Route path="/dashboard/academic-head" element={<AcademicHeadDashboard />} />
+          <Route path="/dashboard/design-system" element={<DesignSystem />} />
         </Route>
 
         {/* Fallback */}

@@ -20,6 +20,7 @@ import {
   AcademicCapIcon,
   Cog6ToothIcon,
   XMarkIcon,
+  SwatchIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, MagnifyingGlassIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
 
@@ -29,6 +30,7 @@ const navigation = [
   { name: 'Faculty Dashboard', href: '/dashboard/faculty', icon: BookOpenIcon },
   { name: 'School Head Dashboard', href: '/dashboard/school-head', icon: BuildingOfficeIcon },
   { name: 'Academic Head Dashboard', href: '/dashboard/academic-head', icon: AcademicCapIcon },
+  { name: 'Design System', href: '/dashboard/design-system', icon: SwatchIcon },
 ]
 const teams = [
   { id: 1, name: 'Research Group Alpha', href: '#', initial: 'R' },
