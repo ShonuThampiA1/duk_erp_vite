@@ -11,47 +11,84 @@ export default function DesignSystem() {
       {/* Colors */}
       <section className="space-y-6">
         <h2 className="text-2xl font-semibold text-neutral-900 border-b border-border pb-2">1. Brand Colors</h2>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+          {/* Primary */}
           <div className="space-y-2">
-            <div className="h-24 rounded-lg bg-primary-500 shadow-sm flex items-end p-3">
+            <div className="h-24 rounded-lg bg-primary-500 shadow-sm flex items-end p-3 border border-primary-600">
               <span className="text-white font-mono text-sm">Primary</span>
             </div>
             <div className="grid grid-cols-5 gap-1">
-              {[50, 100, 200, 300, 400, 500, 600, 700, 800, 900].map(w => (
-                <div key={w} className={`h-8 rounded bg-primary-${w}`} title={`primary-${w}`}></div>
-              ))}
+              <div className="h-8 rounded bg-primary-50" title="primary-50"></div>
+              <div className="h-8 rounded bg-primary-100" title="primary-100"></div>
+              <div className="h-8 rounded bg-primary-200" title="primary-200"></div>
+              <div className="h-8 rounded bg-primary-300" title="primary-300"></div>
+              <div className="h-8 rounded bg-primary-400" title="primary-400"></div>
+              <div className="h-8 rounded bg-primary-500" title="primary-500"></div>
+              <div className="h-8 rounded bg-primary-600" title="primary-600"></div>
+              <div className="h-8 rounded bg-primary-700" title="primary-700"></div>
+              <div className="h-8 rounded bg-primary-800" title="primary-800"></div>
+              <div className="h-8 rounded bg-primary-900" title="primary-900"></div>
             </div>
           </div>
+
+          {/* Secondary */}
           <div className="space-y-2">
-            <div className="h-24 rounded-lg bg-secondary-500 shadow-sm flex items-end p-3">
+            <div className="h-24 rounded-lg bg-secondary-500 shadow-sm flex items-end p-3 border border-secondary-600">
               <span className="text-white font-mono text-sm">Secondary</span>
             </div>
             <div className="grid grid-cols-5 gap-1">
-              {[50, 100, 200, 300, 400, 500, 600, 700, 800, 900].map(w => (
-                <div key={w} className={`h-8 rounded bg-secondary-${w}`} title={`secondary-${w}`}></div>
-              ))}
+              <div className="h-8 rounded bg-secondary-50" title="secondary-50"></div>
+              <div className="h-8 rounded bg-secondary-100" title="secondary-100"></div>
+              <div className="h-8 rounded bg-secondary-200" title="secondary-200"></div>
+              <div className="h-8 rounded bg-secondary-300" title="secondary-300"></div>
+              <div className="h-8 rounded bg-secondary-400" title="secondary-400"></div>
+              <div className="h-8 rounded bg-secondary-500" title="secondary-500"></div>
+              <div className="h-8 rounded bg-secondary-600" title="secondary-600"></div>
+              <div className="h-8 rounded bg-secondary-700" title="secondary-700"></div>
+              <div className="h-8 rounded bg-secondary-800" title="secondary-800"></div>
+              <div className="h-8 rounded bg-secondary-900" title="secondary-900"></div>
             </div>
           </div>
+
+          {/* Tertiary */}
           <div className="space-y-2">
-            <div className="h-24 rounded-lg bg-tertiary-500 shadow-sm flex items-end p-3">
+            <div className="h-24 rounded-lg bg-tertiary-500 shadow-sm flex items-end p-3 border border-tertiary-600">
               <span className="text-white font-mono text-sm">Tertiary</span>
             </div>
             <div className="grid grid-cols-5 gap-1">
-              {[50, 100, 200, 300, 400, 500, 600, 700, 800, 900].map(w => (
-                <div key={w} className={`h-8 rounded bg-tertiary-${w}`} title={`tertiary-${w}`}></div>
-              ))}
+              <div className="h-8 rounded bg-tertiary-50" title="tertiary-50"></div>
+              <div className="h-8 rounded bg-tertiary-100" title="tertiary-100"></div>
+              <div className="h-8 rounded bg-tertiary-200" title="tertiary-200"></div>
+              <div className="h-8 rounded bg-tertiary-300" title="tertiary-300"></div>
+              <div className="h-8 rounded bg-tertiary-400" title="tertiary-400"></div>
+              <div className="h-8 rounded bg-tertiary-500" title="tertiary-500"></div>
+              <div className="h-8 rounded bg-tertiary-600" title="tertiary-600"></div>
+              <div className="h-8 rounded bg-tertiary-700" title="tertiary-700"></div>
+              <div className="h-8 rounded bg-tertiary-800" title="tertiary-800"></div>
+              <div className="h-8 rounded bg-tertiary-900" title="tertiary-900"></div>
             </div>
           </div>
+
+          {/* Neutral */}
           <div className="space-y-2">
-            <div className="h-24 rounded-lg bg-neutral-500 shadow-sm flex items-end p-3">
+            <div className="h-24 rounded-lg bg-neutral-500 shadow-sm flex items-end p-3 border border-neutral-600">
               <span className="text-white font-mono text-sm">Neutral</span>
             </div>
             <div className="grid grid-cols-5 gap-1">
-              {[50, 100, 200, 300, 400, 500, 600, 700, 800, 900].map(w => (
-                <div key={w} className={`h-8 rounded bg-neutral-${w}`} title={`neutral-${w}`}></div>
-              ))}
+              <div className="h-8 rounded bg-neutral-50" title="neutral-50"></div>
+              <div className="h-8 rounded bg-neutral-100" title="neutral-100"></div>
+              <div className="h-8 rounded bg-neutral-200" title="neutral-200"></div>
+              <div className="h-8 rounded bg-neutral-300" title="neutral-300"></div>
+              <div className="h-8 rounded bg-neutral-400" title="neutral-400"></div>
+              <div className="h-8 rounded bg-neutral-500" title="neutral-500"></div>
+              <div className="h-8 rounded bg-neutral-600" title="neutral-600"></div>
+              <div className="h-8 rounded bg-neutral-700" title="neutral-700"></div>
+              <div className="h-8 rounded bg-neutral-800" title="neutral-800"></div>
+              <div className="h-8 rounded bg-neutral-900" title="neutral-900"></div>
             </div>
           </div>
+
         </div>
       </section>
 
