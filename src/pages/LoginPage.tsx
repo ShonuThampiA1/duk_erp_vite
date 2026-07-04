@@ -10,19 +10,19 @@ export default function LoginPage() {
     // Simulate authentication and redirect based on role
     switch (role) {
       case 'student':
-        navigate('/dashboard/student');
+        navigate('/student/dashboard');
         break;
       case 'faculty':
-        navigate('/dashboard/faculty');
+        navigate('/faculty/dashboard');
         break;
       case 'schoolHead':
-        navigate('/dashboard/school-head');
+        navigate('/school-head/dashboard');
         break;
       case 'academicHead':
-        navigate('/dashboard/academic-head');
+        navigate('/academic-head/dashboard');
         break;
       default:
-        navigate('/dashboard');
+        navigate('/');
     }
   };
 
@@ -104,6 +104,17 @@ export default function LoginPage() {
                     </div>
                  </div>
 
+                 {/* Demo Credentials Info */}
+                 <div className="rounded-md bg-blue-50 p-4">
+                   <div className="flex">
+                     <div className="ml-3 flex-1 md:flex md:justify-between">
+                       <p className="text-sm text-blue-700">
+                         <strong>Demo Mode:</strong> Select a role above and click Sign In. No credentials required for this demo.
+                       </p>
+                     </div>
+                   </div>
+                 </div>
+
                  {/* User ID / Email */}
                  <div>
                    <label htmlFor="userId" className="block text-sm/6 font-medium text-neutral-900">
@@ -115,7 +126,8 @@ export default function LoginPage() {
                        name="userId"
                        type="text"
                        autoComplete="email"
-                       placeholder="Enter your ID or Email"
+                       placeholder="demo_user"
+                       defaultValue="demo_user"
                        className="block w-full rounded-md bg-white px-3 py-2 text-base text-neutral-900 outline outline-1 -outline-offset-1 outline-border placeholder:text-neutral-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-primary-600 sm:text-sm/6"
                      />
                    </div>
@@ -140,6 +152,7 @@ export default function LoginPage() {
                        type="password"
                        autoComplete="current-password"
                        placeholder="••••••••"
+                       defaultValue="password123"
                        className="block w-full rounded-md bg-white px-3 py-2 text-base text-neutral-900 outline outline-1 -outline-offset-1 outline-border placeholder:text-neutral-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-primary-600 sm:text-sm/6"
                      />
                    </div>

@@ -15,23 +15,51 @@ import {
   BellIcon,
   HomeIcon,
   UsersIcon,
-  BookOpenIcon,
   BuildingOfficeIcon,
   AcademicCapIcon,
   Cog6ToothIcon,
   XMarkIcon,
-  SwatchIcon,
+  CalendarIcon,
+  CheckCircleIcon,
+  ClipboardDocumentCheckIcon,
+  CurrencyDollarIcon,
+  BuildingLibraryIcon,
+  ChartBarIcon,
+  DocumentChartBarIcon,
+  ShieldCheckIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, MagnifyingGlassIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
 
-const navigation = [
-  { name: 'Dashboard', href: '/dashboard', icon: HomeIcon },
-  { name: 'Student Dashboard', href: '/dashboard/student', icon: UsersIcon },
-  { name: 'Faculty Dashboard', href: '/dashboard/faculty', icon: BookOpenIcon },
-  { name: 'School Head Dashboard', href: '/dashboard/school-head', icon: BuildingOfficeIcon },
-  { name: 'Academic Head Dashboard', href: '/dashboard/academic-head', icon: AcademicCapIcon },
-  { name: 'Design System', href: '/dashboard/design-system', icon: SwatchIcon },
-]
+const roleNavigation: Record<string, { name: string; href: string; icon: any }[]> = {
+  student: [
+    { name: 'Dashboard', href: '/student/dashboard', icon: HomeIcon },
+    { name: 'Timetable', href: '/student/timetable', icon: CalendarIcon },
+    { name: 'Attendance', href: '/student/attendance', icon: CheckCircleIcon },
+    { name: 'Assignments', href: '/student/assignments', icon: ClipboardDocumentCheckIcon },
+    { name: 'Fees', href: '/student/fees', icon: CurrencyDollarIcon },
+    { name: 'Library', href: '/student/library', icon: BuildingLibraryIcon },
+  ],
+  faculty: [
+    { name: 'Dashboard', href: '/faculty/dashboard', icon: HomeIcon },
+    { name: 'Classes', href: '/faculty/classes', icon: UsersIcon },
+    { name: 'Attendance', href: '/faculty/attendance', icon: CheckCircleIcon },
+    { name: 'Assignments', href: '/faculty/assignments', icon: ClipboardDocumentCheckIcon },
+    { name: 'Grading', href: '/faculty/grading', icon: AcademicCapIcon },
+  ],
+  schoolHead: [
+    { name: 'Dashboard', href: '/school-head/dashboard', icon: HomeIcon },
+    { name: 'Departments', href: '/school-head/departments', icon: BuildingOfficeIcon },
+    { name: 'Faculty Performance', href: '/school-head/faculty-performance', icon: ChartBarIcon },
+    { name: 'Reports', href: '/school-head/reports', icon: DocumentChartBarIcon },
+  ],
+  academicHead: [
+    { name: 'Dashboard', href: '/academic-head/dashboard', icon: HomeIcon },
+    { name: 'Schools', href: '/academic-head/schools', icon: BuildingOfficeIcon },
+    { name: 'Analytics', href: '/academic-head/analytics', icon: ChartBarIcon },
+    { name: 'Policies', href: '/academic-head/policies', icon: ShieldCheckIcon },
+  ],
+}
+
 const teams = [
   { id: 1, name: 'Research Group Alpha', href: '#', initial: 'R' },
   { id: 2, name: 'Curriculum Committee', href: '#', initial: 'C' },
@@ -46,10 +74,12 @@ function classNames(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-export default function MainLayout() {
+export default function MainLayout({ role = 'student' }: { role?: string }) {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [isDesktopSidebarOpen, setIsDesktopSidebarOpen] = useState(true)
   const location = useLocation()
+
+  const navigation = roleNavigation[role] || roleNavigation.student;
 
   return (
     <>
@@ -77,7 +107,7 @@ export default function MainLayout() {
               {/* Mobile Sidebar */}
               <div className="relative flex grow flex-col gap-y-5 overflow-y-auto bg-surface px-6 pb-4">
                 <div className="flex h-16 shrink-0 items-center mt-4">
-                    <Link to="/dashboard" className="flex items-center gap-2">
+                <Link to={`/${role}/dashboard`} className="flex items-center gap-2">
                         <div className="w-8 h-8 rounded bg-primary-500 text-white flex items-center justify-center font-bold">
                             DUK
                         </div>
@@ -171,7 +201,7 @@ export default function MainLayout() {
         <div className={`hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:flex-col transition-all duration-300 ${isDesktopSidebarOpen ? 'lg:w-72' : 'lg:w-20'}`}>
           <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-border bg-surface px-6 pb-4 overflow-x-hidden">
             <div className={`flex h-16 shrink-0 items-center mt-4 mb-2 ${!isDesktopSidebarOpen && 'justify-center'}`}>
-                 <Link to="/dashboard" className="flex items-center gap-2">
+                 <Link to={`/${role}/dashboard`} className="flex items-center gap-2">
                     <div className="w-8 h-8 shrink-0 rounded bg-primary-500 text-white flex items-center justify-center font-bold shadow-sm">
                         DUK
                     </div>
