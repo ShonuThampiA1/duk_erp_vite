@@ -42,11 +42,8 @@ export default function LoginPage() {
 
         <div className="relative flex flex-col justify-between h-full p-12 text-white">
           <div>
-            <Link to="/" className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded bg-primary-500 text-white flex items-center justify-center font-bold text-xl shadow-lg border border-primary-400">
-                DUK
-              </div>
-              <span className="text-3xl font-bold tracking-tight">ERP Portal</span>
+            <Link to="/" className="inline-block p-4 bg-white/90 backdrop-blur-sm rounded-xl shadow-lg">
+              <img src="/logo.png" alt="DUK ERP Portal" className="h-16 w-auto" />
             </Link>
           </div>
           <div className="mb-24">

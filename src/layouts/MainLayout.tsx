@@ -28,7 +28,7 @@ import {
   DocumentChartBarIcon,
   ShieldCheckIcon,
 } from '@heroicons/react/24/outline'
-import { ChevronDownIcon, MagnifyingGlassIcon, ChevronRightIcon } from '@heroicons/react/20/solid'
+import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 
 const roleNavigation: Record<string, { name: string; href: string; icon: any }[]> = {
   student: [
@@ -108,10 +108,7 @@ export default function MainLayout({ role = 'student' }: { role?: string }) {
               <div className="relative flex grow flex-col gap-y-5 overflow-y-auto bg-surface px-6 pb-4">
                 <div className="flex h-16 shrink-0 items-center mt-4">
                 <Link to={`/${role}/dashboard`} className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded bg-primary-500 text-white flex items-center justify-center font-bold">
-                            DUK
-                        </div>
-                        <span className="text-xl font-bold text-primary-600">ERP Portal</span>
+                        <img src="/logo.png" alt="DUK ERP Portal" className="h-10 w-auto" />
                     </Link>
                 </div>
                 <nav className="relative flex flex-1 flex-col">
@@ -202,10 +199,13 @@ export default function MainLayout({ role = 'student' }: { role?: string }) {
           <div className="flex grow flex-col gap-y-5 overflow-y-auto border-r border-border bg-surface px-6 pb-4 overflow-x-hidden">
             <div className={`flex h-16 shrink-0 items-center mt-4 mb-2 ${!isDesktopSidebarOpen && 'justify-center'}`}>
                  <Link to={`/${role}/dashboard`} className="flex items-center gap-2">
-                    <div className="w-8 h-8 shrink-0 rounded bg-primary-500 text-white flex items-center justify-center font-bold shadow-sm">
-                        DUK
-                    </div>
-                    {isDesktopSidebarOpen && <span className="text-xl font-bold text-primary-600 truncate">ERP Portal</span>}
+                    {isDesktopSidebarOpen ? (
+                        <img src="/logo.png" alt="DUK ERP Portal" className="h-10 w-auto" />
+                    ) : (
+                        <div className="w-8 h-8 shrink-0 rounded bg-primary-500 text-white flex items-center justify-center font-bold shadow-sm">
+                            DUK
+                        </div>
+                    )}
                 </Link>
             </div>
             <nav className="flex flex-1 flex-col">
@@ -374,12 +374,15 @@ export default function MainLayout({ role = 'student' }: { role?: string }) {
           <main className="flex-1 overflow-y-auto">
             <div className="p-6">
                 {/* Breadcrumbs */}
-                <nav className="flex mb-4" aria-label="Breadcrumb">
-                  <ol role="list" className="flex items-center space-x-2">
-                    <li>
-                      <div>
+                <nav aria-label="Breadcrumb" className="flex mb-4">
+                  <ol
+                    role="list"
+                    className="flex space-x-4 rounded-md bg-surface px-6 py-2 shadow-sm border border-border"
+                  >
+                    <li className="flex">
+                      <div className="flex items-center">
                         <Link to="/" className="text-neutral-400 hover:text-neutral-500">
-                          <HomeIcon className="h-5 w-5 shrink-0" aria-hidden="true" />
+                          <HomeIcon aria-hidden="true" className="size-5 shrink-0" />
                           <span className="sr-only">Home</span>
                         </Link>
                       </div>
@@ -389,15 +392,29 @@ export default function MainLayout({ role = 'student' }: { role?: string }) {
                       const isLast = index === array.length - 1;
                       const name = path.charAt(0).toUpperCase() + path.slice(1).replace('-', ' ');
                       return (
-                        <li key={to}>
+                        <li key={to} className="flex">
                           <div className="flex items-center">
-                            <ChevronRightIcon className="h-5 w-5 shrink-0 text-neutral-400" aria-hidden="true" />
+                            <svg
+                              fill="currentColor"
+                              viewBox="0 0 24 44"
+                              preserveAspectRatio="none"
+                              aria-hidden="true"
+                              className="h-full w-6 shrink-0 text-divider"
+                            >
+                              <path d="M.293 0l22 22-22 22h1.414l22-22-22-22H.293z" />
+                            </svg>
                             {isLast ? (
-                              <span className="ml-2 text-sm font-medium text-neutral-700" aria-current="page">
+                              <span
+                                aria-current="page"
+                                className="ml-4 text-sm font-medium text-primary-600"
+                              >
                                 {name}
                               </span>
                             ) : (
-                              <Link to={to} className="ml-2 text-sm font-medium text-neutral-500 hover:text-neutral-700">
+                              <Link
+                                to={to}
+                                className="ml-4 text-sm font-medium text-neutral-500 hover:text-neutral-700"
+                              >
                                 {name}
                               </Link>
                             )}
