@@ -66,7 +66,7 @@ const teams = [
   { id: 3, name: 'Student Council', href: '#', initial: 'S' },
 ]
 const userNavigation = [
-  { name: 'Your profile', href: '#' },
+  { name: 'Your profile', href: '/student/profile' },
   { name: 'Sign out', href: '/login' },
 ]
 

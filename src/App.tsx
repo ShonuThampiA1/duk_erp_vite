@@ -14,6 +14,7 @@ import StudentAttendance from './pages/student/Attendance';
 import StudentAssignments from './pages/student/Assignments';
 import StudentFees from './pages/student/Fees';
 import StudentLibrary from './pages/student/Library';
+import StudentProfile from './pages/student/Profile';
 
 // Faculty Pages
 import FacultyDashboard from './pages/faculty/Dashboard';
@@ -54,6 +55,7 @@ function App() {
           <Route path="assignments" element={<StudentAssignments />} />
           <Route path="fees" element={<StudentFees />} />
           <Route path="library" element={<StudentLibrary />} />
+          <Route path="profile" element={<StudentProfile />} />
         </Route>
 
         {/* Faculty Routes */}
