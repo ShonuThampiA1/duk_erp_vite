@@ -7,10 +7,7 @@ export default function HomeLayout() {
       {/* Header */}
       <header className="h-16 bg-surface border-b border-border shadow-sm px-6 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded bg-primary-500 text-white flex items-center justify-center font-bold">
-            DUK
-          </div>
-          <span className="text-xl font-bold text-primary-600">ERP Portal</span>
+          <img src="/logo.png" alt="DUK ERP Portal" className="h-10 w-auto" />
         </Link>
         <nav className="flex items-center gap-4">
           <Link to="/" className="text-neutral-600 hover:text-primary-500 transition-colors font-medium">
