@@ -27,6 +27,7 @@ import {
   ChartBarIcon,
   DocumentChartBarIcon,
   ShieldCheckIcon,
+  SwatchIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import Footer from '../components/Footer'
@@ -39,6 +40,7 @@ const roleNavigation: Record<string, { name: string; href: string; icon: any }[]
     { name: 'Assignments', href: '/student/assignments', icon: ClipboardDocumentCheckIcon },
     { name: 'Fees', href: '/student/fees', icon: CurrencyDollarIcon },
     { name: 'Library', href: '/student/library', icon: BuildingLibraryIcon },
+    { name: 'Design System', href: '/design-system', icon: SwatchIcon },
   ],
   faculty: [
     { name: 'Dashboard', href: '/faculty/dashboard', icon: HomeIcon },
