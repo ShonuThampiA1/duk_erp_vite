@@ -38,14 +38,14 @@ export default function Footer() {
               </a>
             </p>
             <p className="text-xs text-neutral-100 dark:text-neutral-300">
-              A Centre of Excellence Established by{" "}
+              (A CMMI Level 3 Certified Centre of Excellence) 
               <a
                 href="https://duk.ac.in/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-neutral-100 hover:underline dark:text-neutral-300"
               >
-                Digital University Kerala
+                |  Digital University Kerala
               </a>
             </p>
           </div>
