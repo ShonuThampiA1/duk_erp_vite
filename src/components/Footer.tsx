@@ -17,8 +17,7 @@ export default function Footer() {
                   src="/logo.png"
                   alt="Digital University Kerala"
                   className="mx-auto"
-                  width={143}
-                  height={50}
+                  
                 />
               </div>
             </a>
