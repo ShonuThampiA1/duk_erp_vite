@@ -18,7 +18,10 @@ export default function StudentDashboard() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-neutral-900">Student Dashboard</h1>
+          <h1 className="text-2xl font-bold text-neutral-900 flex items-center gap-2">
+            <BookOpen className="w-6 h-6 text-primary-600" />
+            Student Dashboard
+          </h1>
           <p className="text-neutral-500 text-sm mt-1">Welcome back! Here's your academic overview.</p>
         </div>
       </div>

@@ -29,6 +29,7 @@ import {
   ShieldCheckIcon,
 } from '@heroicons/react/24/outline'
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
+import Footer from '../components/Footer'
 
 const roleNavigation: Record<string, { name: string; href: string; icon: any }[]> = {
   student: [
@@ -371,13 +372,13 @@ export default function MainLayout({ role = 'student' }: { role?: string }) {
             </div>
           </div>
 
-          <main className="flex-1 overflow-y-auto">
-            <div className="p-6">
+          <main className="flex-1 overflow-y-auto flex flex-col">
+            <div className="flex-1 p-6">
                 {/* Breadcrumbs */}
                 <nav aria-label="Breadcrumb" className="flex mb-4">
                   <ol
                     role="list"
-                    className="flex space-x-4 rounded-md bg-surface px-6 py-2 shadow-sm border border-border"
+                    className="flex w-full space-x-4 rounded-md bg-surface px-6 shadow-sm border border-border"
                   >
                     <li className="flex">
                       <div className="flex items-center">
@@ -427,12 +428,10 @@ export default function MainLayout({ role = 'student' }: { role?: string }) {
 
                 <Outlet />
             </div>
-          </main>
 
-          {/* Footer */}
-          <footer className="py-4 px-6 bg-surface border-t border-border text-center text-sm text-neutral-500">
-             <p>&copy; {new Date().getFullYear()} Digital University Kerala ERP</p>
-          </footer>
+            {/* Footer */}
+            <Footer />
+          </main>
         </div>
       </div>
     </>

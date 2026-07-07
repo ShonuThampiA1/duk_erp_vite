@@ -1,5 +1,6 @@
 
 import { Outlet, Link } from 'react-router-dom';
+import Footer from '../components/Footer';
 
 export default function HomeLayout() {
   return (
@@ -25,9 +26,7 @@ export default function HomeLayout() {
       </main>
 
       {/* Footer */}
-      <footer className="py-6 bg-surface border-t border-border text-center text-sm text-neutral-500">
-        <p>&copy; {new Date().getFullYear()} Digital University Kerala. All rights reserved.</p>
-      </footer>
+      <Footer />
     </div>
   );
 }
